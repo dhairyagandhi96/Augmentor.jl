@@ -108,7 +108,7 @@ function indirect_view(A::AbstractArray, I::Tuple)
 end
 
 function indirect_view(A::SubArray{T,N,TA,<:NTuple{N,Range}}, I::Tuple) where {T,N,TA}
-    view(parent(A), indirect_indices(A.indexes, I)...)
+    view(parent(A), indirect_indices(A.indices, I)...)
 end
 
 # --------------------------------------------------------------------

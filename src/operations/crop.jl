@@ -260,7 +260,7 @@ CropSize(; width=64, height=64) = CropSize((height,width))
 @inline supports_stepview(::Type{<:CropSize})   = true
 
 function cropsize_indices(op::CropSize, img::AbstractArray)
-    cntr = convert(Tuple, center(img))
+    cntr = tuple(center(img)...)
     sze = op.size
     corner = map((ci,si)->floor(Int,ci)-floor(Int,si/2)+!isinteger(ci), cntr, sze)
     map((b,s)->b:(b+s-1), corner, sze)
